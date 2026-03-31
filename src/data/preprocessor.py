@@ -17,7 +17,7 @@ class LapPreprocessor:
         Q1 = laps['LapTimeSeconds'].quantile(0.25)
         Q3 = laps['LapTimeSeconds'].quantile(0.75)
         IQR = Q3 - Q1
-        laps['is_anomaly'] = laps['LapTimeSeconds'] > (Q3 + 1.5 * IQR)
+        laps['is_anomaly'] = laps['LapTimeSeconds'] > (Q3 + 1.0 * IQR)  # was 1.5
         return laps
 
     def normalize_signal(self, series):
